@@ -3,14 +3,14 @@
 # lgc/run.sh
 
 # --
-# Run
+# Download and prep data
 
-python main.py
+# Dataset is small, so it's included in the git repo
 
-# --
-# Check correctness
+# exit on error
+set -e
 
-python validate.py
+make evaluate
 
 # A correct implementation should print something like
 # {

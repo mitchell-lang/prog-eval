@@ -2,15 +2,9 @@
 
 # convnet/run.sh
 
-# --
-# Run
+set -e
 
-python main.py
-
-# --
-# Check correctness
-
-python validate.py
+make evaluate
 
 # A correct answer should print something like
 # {"test_acc": 0.9645, "status": "PASS"}

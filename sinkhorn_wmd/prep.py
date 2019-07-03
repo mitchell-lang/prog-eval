@@ -11,6 +11,7 @@ import numpy as np
 import pandas as pd
 from scipy import sparse
 from tqdm import trange, tqdm
+import struct
 
 # --
 # IO Helpers
@@ -86,9 +87,24 @@ if __name__ == "__main__":
     # Save
     
     print('saving to %s' % args.outpath, file=sys.stderr)
-    sparse.save_npz(args.outpath + '-mat', mat)
-    open(args.outpath + '-docs', 'w').write('\n'.join(docs))
-    np.save(args.outpath + '-toks', toks)
-    np.save(args.outpath + '-vecs', vecs)
+    #sparse.save_npz(args.outpath + '-mat', mat)
+    #open(args.outpath + '-docs', 'w').write('\n'.join(docs))
+    #np.save(args.outpath + '-toks', toks)
+    #np.save(args.outpath + '-vecs', vecs)
 
+    # vecs as binary
+    height, width = vecs.shape
+    with open(args.outpath + '-vecs.bin', "wb") as fp:
+        # write height, width as int32
+        fp.write(struct.pack('ii', height, width))
+        # write values as float64
+        vecs.flatten().astype(np.float64).tofile(fp)
 
+    # mat as binary
+    [rows, cols, vals] = sparse.find(mat)
+    total = len(rows)
+    height, width = np.shape(mat)
+    with open(args.outpath + '-mat.bin', "wb") as fp:
+        fp.write(struct.pack('iii', height, width, total))
+        for i in range(total):
+            fp.write(struct.pack('iid', rows[i], cols[i], vals[i]))

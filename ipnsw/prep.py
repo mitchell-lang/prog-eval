@@ -50,6 +50,14 @@ if __name__ == '__main__':
                 last_src  = src
         
         graphs[level][last_src] = tmp[start_idx:,1]
-    
     print('prep.py: writing %s' % args.outpath, file=sys.stderr)
-    _ = pickle.dump(graphs, open(args.outpath, 'wb'))
+    if args.outpath.endswith('.pkl'):
+        _ = pickle.dump(graphs, open(args.outpath, 'wb'))
+    else:
+        with open(args.outpath, 'wt') as fp:
+            for level in [0, 1, 2, 3]:
+                for source in graphs[level]:
+                    fp.write(f'{level} {source}')
+                    for dest in graphs[level][source]:
+                        fp.write(f' {dest}')
+                    fp.write('\n')

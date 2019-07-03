@@ -1,3 +1,31 @@
+The following files are Copyright 2019 Systems & Technology Research.
+All Rights Reserved.
+
+* /sinkhorn_wmd/main.mlb
+* /ipnsw/main.mlb
+* /recsys/main.mlb
+* /convnet/main.mlb
+* /lgc/main.mlb
+* /sinkhorn_wmd/sinkhorn_wmd.sml
+* /sinkhorn_wmd/main.sml
+* /ipnsw/main.sml
+* /ipnsw/ipnsw.sml
+* /recsys/recsys.sml
+* /recsys/main.sml
+* /convnet/convnet.sml
+* /convnet/main.sml
+* /lgc/main.sml
+* /lgc/lgc.sml
+* /sinkhorn_wmd/Makefile
+* /ipnsw/Makefile
+* /recsys/Makefile
+* /convnet/Makefile
+* /lgc/Makefile
+
+Other files in this repository are covered by the license(s) below.
+
+--
+
 MIT License
 
 Copyright (c) 2019 prog-eval

@@ -1,0 +1,6 @@
+(* Copyright 2019 Systems & Technology Research. All Rights Reserved. *)
+$(SML_LIB)/basis/basis.mlb
+$(MITCHELL_LIB)/mitchell_lib.mlb
+convnet.sig
+convnet.sml
+main.sml

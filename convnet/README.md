@@ -84,6 +84,10 @@ __Note:__ The _exact_ details of how the SGD optimizer implemented probably shou
 
 #### Evaluation
 
+**The validation script depends on Python libraries installed by and a Conda
+environment activated by `install.sh`. Please execute `source install.sh` before
+running `run.sh`.**
+
 __To be considered correct, your model needs to attain an accuracy of over 95% on the held-out test set after 5 epochs of training.__
 
 #### Notes

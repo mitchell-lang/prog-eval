@@ -68,15 +68,20 @@ To help relieve ambiguity coming from unfamiliar notation, you can also refer to
 
 ### Notes
 
-The included python code in `main-redacted.py` gives a skeleton for your solution, including relevant hyperparameters.
+The included Mitchell code in `lgc.sml` gives a skeleton for your solution, including relevant hyperparameters.
+The `run.sh` script will compile your program against the relevant libraries, run your program, and then run a validation check on the results.
 
-Notice that we are asking you to compute PR-Nibble and ISTA scores for 10 different seed nodes.  Thus, the output of each function should be an array of size `(num_nodes, num_seeds)`. 
+Notice that we are asking you to compute PR-Nibble and ISTA scores for 10 different seed nodes.  Thus, the output of each function should be list of size `num_seeds`, each entry of which is an array of size `num_nodes`.
 
 __Beware:__ The LGC literature sometimes talk about using multiple seeds to compute a _single_ PageRank vector -- the interpretation of this is computing importance scores of each node _from the perspective of a set of nodes_.  __That is not what we want you to do.__ We want you to compute a separate PageRank vector _for each of the seed nodes_.  
 
 During optimization, you might be able to exploit the fact that we're computing a bunch of vectors at the same time by e.g. using parallelism, vectorizing computations, or reframing the algorithm using matrix multiplication.  We suggest you implement a version that works for a single seed node first before moving on to these kinds of optimizations.
 
 ### Evaluation
+
+**The validation script depends on Python libraries installed by and a Conda
+environment activated by `install.sh`. Please execute `source install.sh` before
+running `run.sh`.**
 
 We consider a solution to be correct if it's Spearman correlation with the reference output is above 0.999 _for all seed nodes._
 

@@ -2,15 +2,9 @@
 
 # sinkhorn_wmd/run.sh
 
-# --
-# Run
+set -e
 
-python main.py
-
-# --
-# Check correctness
-
-python validate.py
+make evaluate
 
 # A correct solution will print something like
 # {"max_diff": 4.997842140141984e-09, "status": "PASS"}

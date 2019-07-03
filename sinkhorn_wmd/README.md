@@ -75,7 +75,7 @@ __Another note:__ This version of the Sinkhorn distance algorithm is "vectorized
  - lambda = 1
  - max_iter = 15
 
-All parameters are shown in `main-redacted.py`.
+The parameters are given as arguments to the function that you have to define in `sinkhorn_wmd.sml`. The parameters are defined in `main.sml`.
 
 ## Evaluation
 

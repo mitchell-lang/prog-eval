@@ -43,12 +43,12 @@ In summary, the pseudocode for the entire algorithm looks like this:
     - Initialize `emb_dim x hidden_dim` matrix `W_bottleneck ~ Uniform(min=-scale, max=scale)`where `scale = 1 / sqrt(emb_dim)`
     - Initialize `hidden_dim x num_items` matrix `W_output ~ Uniform(min=-scale, max=scale)` where `scale = 1 / sqrt(hidden_dim)`
     - Initialize `hidden_dim`-dimensional `B_bottleneck` vector, with all entries equal to `0`
-    - Initialize `hidden_dim`-dimensional `B_output` vector, with all entries equal to `bias_offset`
+    - Initialize `num_items`-dimensional `B_output` vector, with all entries equal to `bias_offset`
 
 for epoch in epochs:
     for x in make_minibatches(dataset): # each x is a (batch_size x num_items) sparse matrix
         h1 = relu(x @ W_embedding)                                      # batch_size x emb_dim
-        h2 = relu(dropout(batchnorm(h1) @ W_bottleneck) + B_bottleneck) # batch_size x hidden_dim
+        h2 = relu(dropout(batchnorm(h1)) @ W_bottleneck + B_bottleneck) # batch_size x hidden_dim
         h3 = sigmoid(dropout(batchnorm(h2)) @ W_output + B_output)      # batch_size x num_items
         
         loss = - 1 * sum(x * log(h) + (1 - x) * log(1 - h))
@@ -56,13 +56,13 @@ for epoch in epochs:
         Take gradient step (using Adam optimizer)
 ```
 
-Note that we've explicitly written out the matrix multiplies and additions done inside the neural network.  If you're using a higher level library like `pytorch` or `keras`, you should be able to express this neural network as a sequence of layers.
+Note that we've explicitly written out the matrix multiplies and additions done inside the neural network.  If you're using a higher level library like `KANN`, you should be able to express this neural network as a sequence of layers.
 
 Also note that since the input to the network is high dimensional, sparse, and binary, people often use an "embedding" layer plus sum pooling to implement the first layer.
 
 ### Hyperparameters
 
-Relevant hyperparameters are shown in the `parse_args` function in `main-redacted.py`.  To summarize:
+Relevant hyperparameters are given as arguments to the `predict` function in `recsys.sml`.  To summarize:
 
 - loss: binary cross entropy
 - number of epochs: 1
@@ -82,15 +82,17 @@ Relevant hyperparameters are shown in the `parse_args` function in `main-redacte
     - epsilon: 1e-8
     - If you need to implement your own optimizer, you can look at [pytorch](https://pytorch.org/docs/stable/_modules/torch/optim/adam.html) as a reference.  Simplified versions of their optimizers can be seen [in this gist](https://gist.github.com/bkj/77bf8eabb52b1dfac41c69085e07fd3d)
 
-Note that the input data (`X_train` in `main-redacted.py`) is not a matrix, but a list of lists of different lengths -- this means that you may need to do some zero-padding as you form minibatches for your training procedure.
-
 __Note:__ The _exact_ details of how batch normalization and ADAM are implemented probably shouldn't matter -- Tensorflow implementations may be slightly different than Pytorch implementations may be different than custom implementations, but the quality of the model should be the same.  If you _strongly_ suspect that you're having trouble that's tied to either of these parts of the model, please reach out for support.
 
 ## Evaluation
 
+**The validation script depends on Python libraries installed by and a Conda
+environment activated by `install.sh`. Please execute `source install.sh` before
+running `run.sh`.**
+
 We want the model to assign high scores to items that the user liked.  However, at evaluation time, we will ignore the (user, item) pairs that we've seen in the training set -- we expect the model to (partially) "memorize" those items, so they're not particularly interesting. Thus, before computing our evaluation metrics, we "filter" the training items from the predictions.
 
-The proportion of the top `k` items as ranked by our model that are truly liked by the user is our metric of interest, `precision-at-k`.  You can see an implementation of this metric at helpers.py Line 12 (including the filtering mentioned above).
+The proportion of the top `k` items as ranked by our model that are truly liked by the user is our metric of interest, `precision-at-k`. The scaffolding in `main.sml` extracts this for you.
 
 Our reference implementation code produces the following scores after 1 epoch of training w/ the above settings:
 ```json

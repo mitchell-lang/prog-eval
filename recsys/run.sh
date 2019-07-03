@@ -2,15 +2,10 @@
 
 # recsys/run.sh
 
-# --
-# Run
+# exit on error
+set -e
 
-python main.py
-
-# --
-# Check correctness
-
-python validate.py
+make evaluate
 
 # A correct solution should print something like
 # {

@@ -62,6 +62,10 @@ __Note:__ Some readers may be familiar with other data structures that can be us
 
 ### Evaluation
 
+**The validation script depends on Python libraries installed by and a Conda
+environment activated by `install.sh`. Please execute `source install.sh` before
+running `run.sh`.**
+
 __To be considered "correct", your implementation must both:__
 
  - achieve a `recall@10` score of > 0.99; and
@@ -69,7 +73,8 @@ __To be considered "correct", your implementation must both:__
 
 on the provided dataset.
 
-`recall@k` is defined as the proportion of the actual `k` most similar elements of `X` to `q` that are present in the `k` elements returned by the IP-NSW search, averaged across all queries.  `compute_score` in `main.py` contains this definition in code.
+`recall@k` is defined as the proportion of the actual `k` most similar elements of `X` to `q` that are present in the `k` elements returned by the IP-NSW search, averaged across all queries.
+`compute_recall` in `validate.py` contains this definition in code.
 
 ### References
 

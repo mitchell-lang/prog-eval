@@ -1,0 +1,7 @@
+(* Copyright 2019 Systems & Technology Research. All Rights Reserved. *)
+$(SML_LIB)/basis/basis.mlb
+$(SML_LIB)/smlnj-lib/Util/smlnj-lib.mlb
+$(MITCHELL_LIB)/mitchell_lib.mlb
+recsys.sig
+recsys.sml
+main.sml
