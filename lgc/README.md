@@ -1,5 +1,13 @@
 # lgc (local graph clustering)
 
+Please begin by reading the README in the root of this repository.
+
+> __The testers' task is to write a functional `main.sml` that passes the
+> correctness check in `validate.py`__.  `main.sml` contains the IO
+> scaffolding and specifies all of the necessary parameters given to the
+> implementation skeleton in `{task}.sml`, which should be filled out by the
+> testers.
+
 __Task:__ Implement the PR-Nibble and ISTA algorithms for personalized PageRank.
 
 PageRank is an algorithm that computes the "importance" of each node in a network, and is well known for (among other things) forming the basis of Google's search engine (higher PageRank -> web page is more important -> should be ranked higher in the search results). While the original PageRank computes the global importance of each node, "personalized PageRank" computes the importance of each node _from the perspective of a particular seed node._  Some more background on PageRank can be found in Section 3 of [3].

@@ -1,5 +1,13 @@
 # convnet
 
+Please begin by reading the README in the root of this repository.
+
+> __The testers' task is to write a functional `main.sml` that passes the
+> correctness check in `validate.py`__.  `main.sml` contains the IO
+> scaffolding and specifies all of the necessary parameters given to the
+> implementation skeleton in `{task}.sml`, which should be filled out by the
+> testers.
+
 __Task:__ Implement a convolutional neural network (CNN) for image classification.
 
 Image classification using a CNN is probably the most famous application of deep learning -- image classification was a relatively difficult machine learning problem in the past, but CNNs have dramatically improved the state of the art on the task over the past 5-10 years.

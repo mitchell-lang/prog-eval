@@ -1,5 +1,13 @@
 # IP-NSW
 
+Please begin by reading the README in the root of this repository.
+
+> __The testers' task is to write a functional `main.sml` that passes the
+> correctness check in `validate.py`__.  `main.sml` contains the IO
+> scaffolding and specifies all of the necessary parameters given to the
+> implementation skeleton in `{task}.sml`, which should be filled out by the
+> testers.
+
 __Task:__ Implement the query portion of the IP-NSW algorithm for approximate maximum inner product search (MIPS). 
 
 Given a set of `d`-dimensional vectors `X` and a query vector `q`, the goal of MIPS is to find the `K` elements of `X` that have the largest inner product with `q`.  

@@ -1,6 +1,14 @@
 # recsys (Autoencoder-based Recommender System)
 
-__Task:__ Implement and train a neural-network based recommender system. 
+Please begin by reading the README in the root of this repository.
+
+> __The testers' task is to write a functional `main.sml` that passes the
+> correctness check in `validate.py`__.  `main.sml` contains the IO
+> scaffolding and specifies all of the necessary parameters given to the
+> implementation skeleton in `{task}.sml`, which should be filled out by the
+> testers.
+
+__Task:__ Implement and train a neural-network based recommender system.
 
 Specifically, the neural network is an autoencoder that takes a list of items that a person has "liked", and predicts a score for all items. Autoencoders are neural network models where the input and the target are the same.  That is, if `f` is a function parameterized by a neural network, autoencoders try to minimize `loss(x, f(x))`.
 

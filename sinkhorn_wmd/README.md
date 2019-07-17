@@ -1,5 +1,13 @@
 # Sinkhorn Word Movers Distance (sinkhorn_wmd)
 
+Please begin by reading the README in the root of this repository.
+
+> __The testers' task is to write a functional `main.sml` that passes the
+> correctness check in `validate.py`__.  `main.sml` contains the IO
+> scaffolding and specifies all of the necessary parameters given to the
+> implementation skeleton in `{task}.sml`, which should be filled out by the
+> testers.
+
 __Task:__ Write an efficient implementation of "Word Mover's Distance" (WMD) using the Sinkhorn-Knopp algorithm. 
 
 ## Background
